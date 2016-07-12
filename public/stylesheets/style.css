@@ -1,8 +1,25 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face {
+    font-family: 'kokoro';
+    src: url('../fonts/Kokoro.otf');
 }
 
-a {
-  color: #00B7FF;
+body {
+  font-family: 'kokoro';
+  background-image: url('../images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav-wrapper {
+  margin-top: 2em;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.catchphrase {
+	writing-mode: vertical-rl;
+	-ms-writing-mode: tb-rl;
+	-webkit-writing-mode:vertical-rl;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 3em;
+  padding: 1em;
 }

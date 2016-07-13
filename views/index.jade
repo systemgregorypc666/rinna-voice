@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header
+    nav.transparent
+      div.nav-wrapper
+        div.container
+          a(href="#").brand-logo.center りんなボイス
+          ul#nav-mobile.left.hide-on-med-and-down
+            li: a(href="#") Link1
+            li: a(href="#") Link2
+            li: a(href="#") Link3
+  main
+    div.container
+      h5.white-text.catchphrase 僕は女子高生と話がしたいんだ。
+
+  footer

@@ -1,17 +1,39 @@
 extends layout
 
 block content
-  header
-    nav.transparent
-      div.nav-wrapper
+  div.wrapper
+    section.top
+      header
+        nav.transparent
+          div.nav-wrapper
+            div.container
+              a(href='#').brand-logo.center りんなボイス
+      main
         div.container
-          a(href="#").brand-logo.center りんなボイス
-          ul#nav-mobile.left.hide-on-med-and-down
-            li: a(href="#") Link1
-            li: a(href="#") Link2
-            li: a(href="#") Link3
-  main
-    div.container
-      h5.white-text.catchphrase 僕は女子高生と話がしたいんだ。
+          h5.white-text.catchphrase 僕は女子高生と話がしたいんだ。
 
-  footer
+    section.chat
+      main
+        div.container
+          div#title-frame
+            h5.center-align りんな
+
+        div.container
+          div#chat-frame.center-align
+            p.chat-talk
+              span.talk-icon
+                img(src="./images/me.png" alt="me").icon
+              span.talk-content.grey.lighten-3.left-align
+                a(href='https://twitter.com/rinna_voice') りんなボイスのアカウント
+
+            p.chat-talk.rinna
+              span.talk-icon
+                img(src='./images/rinna.jpg' alt="rinna").icon
+              span.talk-content.green.accent-1.right-align
+                a(href='https://twitter.com/ms_rinna') りんなのアカウント
+
+          div#input-frame
+            div.input-text
+              div.input-field.input-field-width
+                i.material-icons.prefix mode_edit
+                input#message(type='text')

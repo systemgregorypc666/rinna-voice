@@ -5,6 +5,11 @@
 
 body {
   font-family: 'kokoro';
+  min-width: 100vh;
+  min-height: 100vh;
+}
+
+.top {
   background-image: url('../images/background.jpg');
   background-size: 100% auto;;
   background-repeat: no-repeat;
@@ -23,3 +28,113 @@ body {
   margin-top: 5rem;
   padding: 2rem;
 }
+
+/* タイトル ここから */
+#title-frame {
+  min-height: 5vh;
+  margin: auto;
+  border: 5px solid #e0e0e0;
+	border-radius: 3px;
+}
+/* タイトル ここまで */
+
+/* チャット ここから */
+#chat-frame {
+  min-height: 70vh;
+  max-height: 70vh;
+  margin: auto;
+  border: 5px solid #e0e0e0;
+	border-radius: 3px;
+  border-top :0;
+  padding: 1rem;
+  overflow: hidden; /*　はみ出した部分は切り捨て */
+}
+
+.chat-talk {
+  overflow: hidden;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.chat-talk span {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-talk .talk-icon {
+  float: left;
+  width: auto;
+}
+
+.chat-talk .talk-content {
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  min-height: 50px;
+  border-radius: 10px;
+  margin: 0 auto 0 70px;
+  padding: 1em;
+}
+
+.chat-talk .talk-icon img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.chat-talk .talk-content:before {
+  position: absolute;
+  top: 15px;
+  left: -20px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border: 10px solid transparent;
+  border-right-color: #eeeeee;
+}
+
+.chat-talk.rinna .talk-icon {
+  float: right;
+}
+
+.chat-talk.rinna .talk-content {
+  margin: 0 70px 0 auto;
+  color: #000;
+}
+
+.chat-talk.rinna .talk-content:before {
+  right: -20px;
+  left: auto;
+  border-color: transparent;
+  border-left-color: #b9f6ca;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
+/* チャット ここまで */
+
+/* 入力 ここから */
+#input-frame {
+  min-height: 10vh;
+  border: 5px solid #e0e0e0;
+	border-radius: 3px;
+  border-top :0;
+}
+
+.input-text {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field-width {
+  width: 50vw;
+}
+/* 入力 ここまで */

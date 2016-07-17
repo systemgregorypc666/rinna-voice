@@ -1,3 +1,5 @@
 $(function() {
-  $('.wrapper').onepage_scroll();
+  $('.wrapper').onepage_scroll({
+    loop: false
+  });
 });

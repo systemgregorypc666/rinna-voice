@@ -7,18 +7,22 @@ block content
         nav.transparent
           div.nav-wrapper
             div.container
-              a(href='#').brand-logo.center りんなボイス
+              a(href='#').brand-logo.center
+                span.nav-title りんなボイス
       main
         div.container
-          h5.white-text.catchphrase 僕は女子高生と話がしたいんだ。
+          span.white-text.catchphrase 僕は女子高生と話がしたいんだ。
+          div.center-align
+            a(href="#").arrow
+              span
 
     section.chat
       main
         div.container
-          div#title-frame
-            h5.center-align りんな
+          div#title-frame.white
+            h4.center-align りんな
 
-          div#chat-frame.center-align
+          div#chat-frame.center-align.white
             p.chat-talk
               span.talk-icon
                 img(src="./images/me.png" alt="me").icon
@@ -31,7 +35,7 @@ block content
               span.talk-content.green.accent-1.right-align
                 a(href='https://twitter.com/ms_rinna') りんなのアカウント
 
-          div#input-frame
+          div#input-frame.white
             div.input-text
               div.input-field.input-field-width
                 i.material-icons.prefix mode_edit

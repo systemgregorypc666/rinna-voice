@@ -5,19 +5,30 @@
 
 body {
   font-family: 'kokoro';
-  min-width: 100vh;
+  min-width: 100vw;
   min-height: 100vh;
+}
+
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+  height: 12vh;
+  line-height: 12vh;
 }
 
 .top {
   background-image: url('../images/background.jpg');
-  background-size: 100% auto;;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .nav-wrapper {
-  margin-top: 3rem;
   background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 4vh;
+}
+
+.nav-title {
+  font-size: 4vh;
 }
 
 .catchphrase {
@@ -25,23 +36,25 @@ body {
 	-ms-writing-mode: tb-rl;
 	-webkit-writing-mode:vertical-rl;
   background-color: rgba(0, 0, 0, 0.5);
-  margin-top: 5rem;
-  padding: 2rem;
+  font-size: 4vh;
+  margin: 6vh;
+  padding: 4vh;
 }
 
-/* タイトル ここから */
+.chat {
+  background: repeating-linear-gradient(45deg, #444, #444 10px, #888 0, #888 20px);
+}
+
 #title-frame {
-  min-height: 5vh;
+  min-height: 10vh;
   margin: auto;
+  margin-top: 2vh;
   border: 5px solid #e0e0e0;
 	border-radius: 3px;
 }
-/* タイトル ここまで */
 
-/* チャット ここから */
 #chat-frame {
-  min-height: 75vh;
-  max-height: 75vh;
+  min-height: 70vh;
   margin: auto;
   border: 5px solid #e0e0e0;
 	border-radius: 3px;
@@ -117,11 +130,10 @@ body {
   height: 50px;
   width: 50px;
 }
-/* チャット ここまで */
 
-/* 入力 ここから */
 #input-frame {
   min-height: 10vh;
+  margin: auto;
   border: 5px solid #e0e0e0;
 	border-radius: 3px;
   border-top :0;
@@ -137,4 +149,89 @@ body {
 .input-field-width {
   width: 50vw;
 }
-/* 入力 ここまで */
+
+/**************************************************
+ * 下矢印
+ **************************************************/
+.arrow {
+	padding-top: 60px;
+  position: fixed;
+  bottom: 8vh;
+  /* right: 8vw; */
+  text-align: center;
+}
+
+.arrow span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+
+.arrow span::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	content: '';
+	width: 16px;
+	height: 16px;
+	margin: -12px 0 0 -8px;
+	border-left: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	box-sizing: border-box;
+}
+
+.arrow span::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	content: '';
+	width: 44px;
+	height: 44px;
+	box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+	border-radius: 100%;
+	opacity: 0;
+	-webkit-animation: sdb 3s infinite;
+	animation: sdb 3s infinite;
+	box-sizing: border-box;
+}
+
+@-webkit-keyframes sdb {
+	0% {
+		opacity: 0;
+	}
+	30% {
+		opacity: 1;
+	}
+	60% {
+		box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes sdb {
+	0% {
+		opacity: 0;
+	}
+	30% {
+		opacity: 1;
+	}
+	60% {
+		box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}

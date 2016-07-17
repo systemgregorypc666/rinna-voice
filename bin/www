@@ -1,57 +1,68 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
 var app = require('../app');
 var debug = require('debug')('rinna:server');
 var http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
-
 var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-
 var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
+var io = require('socket.io')(server);
+var sqlite3 = require('sqlite3').verbose();
+var twitter = require('twitter');
+var settings = require('../settings');
+
+var db = new sqlite3.Database('rinna.db');
+var client = new twitter({
+  consumer_key: settings.consumer_key,
+  consumer_secret: settings.consumer_secret,
+  access_token_key: settings.access_token_key,
+  access_token_secret: settings.access_token_secret
+});
+
+io.on('connection', function(socket) {
+  socket.on('me', function(data) {
+    var text = '@ms_rinna ' + data.text;
+    client.post('statuses/update', { status: text },  function(error, tweet, response) {
+      socket.emit('me', tweet);
+      socket.broadcast.emit('me', tweet);
+    });
+  });
+
+	socket.on('rinna', function(data) {
+    var tweet = {};
+    db.serialize(function() {
+      db.each('SELECT * FROM tweets WHERE in_reply_to_status_id_str = ' + data.id_str, function(err, row) {
+        tweet = row;
+      }, function(err, count) {
+        if (count === 0) {
+          tweet = {};
+        }
+        socket.emit('rinna', tweet);
+        // socket.broadcast.emit('rinna', tweet);
+      });
+    });
+	});
+});
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
-    // named pipe
     return val;
   }
 
   if (port >= 0) {
-    // port number
     return port;
   }
 
   return false;
 }
-
-/**
- * Event listener for HTTP server "error" event.
- */
 
 function onError(error) {
   if (error.syscall !== 'listen') {
@@ -62,7 +73,6 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -76,10 +86,6 @@ function onError(error) {
       throw error;
   }
 }
-
-/**
- * Event listener for HTTP server "listening" event.
- */
 
 function onListening() {
   var addr = server.address();

@@ -1,7 +1,7 @@
 var twitter = require('twitter');
 var sqlite3 = require('sqlite3').verbose();
-
 var settings = require('./settings');
+
 var client = new twitter({
   consumer_key: settings.consumer_key,
   consumer_secret: settings.consumer_secret,

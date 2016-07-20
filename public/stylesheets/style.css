@@ -55,6 +55,7 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
 
 #chat-frame {
   min-height: 70vh;
+  max-height: 70vh;
   margin: auto;
   border: 5px solid #e0e0e0;
 	border-radius: 3px;

@@ -32,7 +32,7 @@ client.stream('statuses/filter', {track: '@rinna_voice'},  function(stream) {
           console.error(e);
           return;
         }
-        fs.writeFile('./voices/' + tweet.id_str + '.wav', buf, 'binary', function(e) {
+        fs.writeFile('./public/voices/' + tweet.id_str + '.wav', buf, 'binary', function(e) {
           if (e) {
             console.error(e);
             return;

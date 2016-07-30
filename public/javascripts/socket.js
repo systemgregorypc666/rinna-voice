@@ -16,5 +16,6 @@ socket.on('rinna', function(tweet) {
     var message = tweet.text.replace('@rinna_voice ', '');
     $('#chat-frame').append('<p class="chat-talk rinna"><span class="talk-icon"><img src="./images/rinna.jpg" alt="rinna" class="icon"></span><span class="talk-content green accent-1 right-align">' + message + '</span></p>');
     $('#chat-frame').animate({scrollTop: $('#chat-frame')[0].scrollHeight}, 'fast');
+    $('.chat').append('<audio src="../voices/' + tweet.id_str + '.wav" autoplay></audio>');
   }
 });

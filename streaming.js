@@ -23,11 +23,11 @@ client.stream('statuses/filter', {track: '@rinna_voice'},  function(stream) {
       stmt.finalize();
     });
 
-    voice.speaker(voice.SPEAKER.HIKARI)
+    voice.speaker(voice.SPEAKER.agathaIA)
       .emotion(voice.EMOTION.HAPPINESS)
       .emotion_level(voice.EMOTION_LEVEL.HIGH)
       .volume(200)
-      .speak(tweet.text.replace('@rinna_voice ', ''), function(e, buf) {
+      .speak(tweet.text.replace('@agathaIA_voice ', ''), function(e, buf) {
         if (e) {
           console.error(e);
           return;

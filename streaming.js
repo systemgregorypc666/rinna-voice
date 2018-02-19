@@ -11,10 +11,10 @@ var client = new twitter({
   access_token_secret: settings.access_token_secret
 });
 
-var db = new sqlite3.Database('rinna.db');
+var db = new sqlite3.Database('agathaIA.db');
 var voice = new voicetext(settings.voice_text_key);
 
-client.stream('statuses/filter', {track: '@rinna_voice'},  function(stream) {
+client.stream('statuses/filter', {track: '@agathaIA_voice'},  function(stream) {
   stream.on('data', function(tweet) {
     db.serialize(function() {
       db.run('CREATE TABLE IF NOT EXISTS tweets (id_str TEXT PRIMARY KEY, text TEXT, source TEXT, truncated TEXT, in_reply_to_status_id_str TEXT, in_reply_to_user_id_str TEXT, in_reply_to_screen_name TEXT, created_at TEXT, timestamp_ms TEXT)');
@@ -23,11 +23,11 @@ client.stream('statuses/filter', {track: '@rinna_voice'},  function(stream) {
       stmt.finalize();
     });
 
-    voice.speaker(voice.SPEAKER.HIKARI)
+    voice.speaker(voice.SPEAKER.agathaIA)
       .emotion(voice.EMOTION.HAPPINESS)
       .emotion_level(voice.EMOTION_LEVEL.HIGH)
       .volume(200)
-      .speak(tweet.text.replace('@rinna_voice ', ''), function(e, buf) {
+      .speak(tweet.text.replace('@agathaIA_voice ', ''), function(e, buf) {
         if (e) {
           console.error(e);
           return;
